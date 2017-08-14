@@ -253,8 +253,6 @@ toolchain {
   compiler_flag: "/bigobj"
   # Allocate 500MB for precomputed headers.
   compiler_flag: "/Zm500"
-  # Use unsigned char by default.
-  compiler_flag: "/J"
   # Use function level linking.
   compiler_flag: "/Gy"
   # Use string pooling.
