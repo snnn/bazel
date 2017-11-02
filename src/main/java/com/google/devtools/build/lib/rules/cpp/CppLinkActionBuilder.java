@@ -1892,6 +1892,7 @@ public class CppLinkActionBuilder {
           name = Link.FAKE_OBJECT_PREFIX + inputArtifact.getExecPathString();
         } else {
           name = inputArtifact.getExecPathString();
+		  name = name.replace('/','\\');
         }
 
         librariesToLink.addValue(
