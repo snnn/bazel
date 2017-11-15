@@ -106,7 +106,7 @@ class MsvcCompiler(msvc_tools.WindowsRunner):
         rt = opt[:3]
         rt_idx = len(parser.options) - i - 1
         break
-    rt = rt or '/MT'  # Default to static runtime
+    rt = rt or '/MD'  # Default to dynamic runtime
     # Add debug if necessary
     if parser.enforce_debug_rt:
       rt += 'd'
