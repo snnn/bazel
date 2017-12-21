@@ -5,5 +5,6 @@ set PATH=C:\Tools\msys64\usr\bin;%JAVA_HOME%\bin;%BUILD_BINARIESDIRECTORY%\packa
 set BAZEL_SH=C:/Tools/msys64/usr/bin/bash.exe
 set MSYS2_PATH_TYPE=inherit
 set BAZEL_PYTHON=%BUILD_BINARIESDIRECTORY%\packages\python\python.exe
+set BAZEL_VS=C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise
 cd %BUILD_SOURCESDIRECTORY%
 %BUILD_BINARIESDIRECTORY%\packages\python\python.exe ci_build.py --build_binaries_directory %BUILD_BINARIESDIRECTORY% --root %BUILD_SOURCESDIRECTORY% --out %BUILD_ARTIFACTSTAGINGDIRECTORY%  --commitid %BUILD_SOURCEVERSION% --buildid %BUILD_BUILDNUMBER%
