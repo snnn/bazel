@@ -24,7 +24,7 @@ with open(os.path.join(args.root,'CHANGELOG.md')) as changelog_file:
 
 print('bazel version: %s' % bazel_version)
 
-OLD_BAZEL = '%s\\packages\\bazel.0.8.0.7323\\tools\\bazel.exe' % args.build_binaries_directory
+OLD_BAZEL = '%s\\packages\\bazel.0.13.0.18933\\tools\\bazel.exe' % args.build_binaries_directory
 print('start build,old bazel=%s' % OLD_BAZEL)
 subprocess.check_call([OLD_BAZEL, '--batch', 'build',('--embed_label=%s-beta' % bazel_version),'--stamp','--features','generate_pdb_file','--config','opt','--action_env=NO_MSVC_WRAPPER=1','--color=no','--compilation_mode','opt','--verbose_failures','--experimental_ui','--copt=/Z7','--host_copt=/Z7','--copt=/Oi','--host_copt=/Oi','--linkopt=/DEBUG:FULL','--copt=/DNDEBUG','--host_copt=/DNDEBUG','src:bazel.exe'])
 print('build finished')
@@ -40,7 +40,7 @@ shutil.copyfile(('%s\\bazel-bin\\src\\bazel.exe' % args.root),'nuget_package\\to
 root = ET.Element('package')
 metadata = ET.SubElement(root, 'metadata')
 ET.SubElement(metadata, 'id').text = 'Bazel'
-ET.SubElement(metadata, 'version').text = '%s.%d-beta' % (bazel_version, args.buildid)
+ET.SubElement(metadata, 'version').text = '%s.%d' % (bazel_version, args.buildid)
 ET.SubElement(metadata, 'authors').text = 'chasun'
 ET.SubElement(metadata, 'owners').text = 'chasun'
 ET.SubElement(metadata, 'licenseUrl').text = 'https://raw.githubusercontent.com/bazelbuild/bazel/master/LICENSE'
@@ -48,7 +48,7 @@ ET.SubElement(metadata, 'projectUrl').text = 'https://bazel.build'
 ET.SubElement(metadata, 'iconUrl').text = 'https://bazel.build/images/bazel-icon.png'
 ET.SubElement(metadata, 'requireLicenseAcceptance').text = 'false'
 ET.SubElement(metadata, 'description').text = 'Bazel is a build tool which coordinates builds and runs tests. This package is compiled from https://github.com/snnn/bazel/commit/%s.' % (args.commitid)
-ET.SubElement(metadata, 'copyright').text = 'Copyright ©2017 Google'
+ET.SubElement(metadata, 'copyright').text = 'Copyright ©2018 Google'
 ET.SubElement(metadata, 'tags').text = 'native'
 files = ET.SubElement(root, 'files')
 ET.SubElement(files, 'file',{'src':'.\\tools\\bazel.exe', 'target':'tools'})
