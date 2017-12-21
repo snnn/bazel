@@ -964,8 +964,7 @@ toolchain {
       action: 'c++-link-executable'
       action: 'c++-link-dynamic-library'
       flag_group {
-        flag: "%{dbg_mode_debug}"
-        flag: "/INCREMENTAL:NO"
+        flag: "%{fastbuild_mode_debug}"
       }
     }
     implies: 'generate_pdb_file'
@@ -979,7 +978,6 @@ toolchain {
       flag_group {
         flag: "/Od"
         flag: "/Z7"
-        flag: "/DDEBUG"
       }
     }
     flag_set {
@@ -987,7 +985,6 @@ toolchain {
       action: 'c++-link-dynamic-library'
       flag_group {
         flag: "%{fastbuild_mode_debug}"
-        flag: "/INCREMENTAL:NO"
       }
     }
     implies: 'generate_pdb_file'
